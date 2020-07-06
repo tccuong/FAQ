@@ -16,4 +16,36 @@
 		Header set Access-Control-Allow-Headers "Content-Type,Authorization, X-Requested-With,X-CSRF-Token"
 	</Directory>
 ```
+**Q3:** How to force Laravel Project to use HTTPS for all routes?
+**A:** Force Https in Laravel 7.x (2020)
+"2020 Update? Url::forceScheme was acting funky for me, but this worked liked a dime."
+
+https code snippet.
+
+resolve(\Illuminate\Routing\UrlGenerator::class)->forceScheme('https');
+
+Add that snippet within any Service Provider Boot Method
+1: Open app/providers/RouteServiceProvider.php.
+2: Then add the https code snippet to the boot method.
+```
+    /**
+     * Define your route model bindings, pattern filters, etc.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        resolve(\Illuminate\Routing\UrlGenerator::class)->forceScheme('https');
+
+        parent::boot();
+    }
+```
+3: Lastly run php artisan route:clear && composer dumpautoload to clear Laravel's cached routes and cached Service Providers.
+
+
+
+
+
+
+References:
 https://stackoverflow.com/questions/43341820/laravel-echo-allow-guests-to-connect-to-presence-channel
