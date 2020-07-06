@@ -49,3 +49,4 @@ Add that snippet within any Service Provider Boot Method
 
 References:
 https://stackoverflow.com/questions/43341820/laravel-echo-allow-guests-to-connect-to-presence-channel
+https://stackoverflow.com/questions/35827062/how-to-force-laravel-project-to-use-https-for-all-routes
